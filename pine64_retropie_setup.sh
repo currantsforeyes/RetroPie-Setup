@@ -245,10 +245,7 @@ install_retroarch() {
         libretro-beetle-psx \
         libretro-snes9x \
         libretro-genesisplusgx \
-        libretro-gambatte \
-        libretro-mgba \
-        libretro-nestopia \
-        libretro-stella2014
+        libretro-nestopia
     
     # Configure RetroArch for Pine A64
     mkdir -p /home/$USER/.config/retroarch
