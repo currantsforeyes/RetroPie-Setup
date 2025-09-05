@@ -240,13 +240,6 @@ install_retroarch() {
     # Install RetroArch from repository (usually more stable)
     sudo apt install -y retroarch retroarch-assets
     
-    # Install additional cores optimized for ARM64
-    sudo apt install -y \
-        libretro-beetle-psx \
-        libretro-snes9x \
-        libretro-genesisplusgx \
-        libretro-nestopia
-    
     # Configure RetroArch for Pine A64
     mkdir -p /home/$USER/.config/retroarch
     
@@ -301,22 +294,7 @@ EOF
     log "RetroArch installation completed"
 }
 
-# Install additional emulators
-install_emulators() {
-    log "Installing additional emulators..."
-    
-    # Install standalone emulators
-    sudo apt install -y \
-        mednafen \
-        mupen64plus \
-        dolphin-emu \
-        ppsspp
-    
-    # Configure emulators for Pine A64
-    mkdir -p /home/$USER/RetroPie/configs/{n64,psx,psp}
-    
-    log "Additional emulators installed"
-}
+# Emulators will be installed from source via RetroPie
 
 # Create startup scripts and desktop entries
 create_startup_scripts() {
