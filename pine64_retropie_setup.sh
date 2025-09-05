@@ -376,13 +376,12 @@ main() {
     setup_audio
     install_emulationstation
     install_retroarch
-    install_emulators
     create_startup_scripts
     configure_system
     
     log "Installation completed successfully!"
     info "Please reboot your system to apply all changes"
-    info "After reboot, launch EmulationStation from the desktop or run: emulationstation-launcher"
+    info "After reboot, launch by running: emulationstation-launcher"
     warning "Remember to copy ROMs to /home/$USER/RetroPie/roms/ and BIOS files to /home/$USER/RetroPie/BIOS/"
 }
 
