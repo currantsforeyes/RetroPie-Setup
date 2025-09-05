@@ -87,7 +87,7 @@ update_system() {
         libavformat-dev \
         libavutil-dev \
         libswscale-dev \
-        libavresample-dev
+        libswresample-dev
 }
 
 # Configure Mali-400MP2 GPU with Lima drivers
@@ -194,6 +194,9 @@ install_emulationstation() {
     # Install dependencies
     sudo apt install -y \
         libsdl2-dev \
+        vlc \
+        libvlc-bin \
+        libvlc-dev \
         libboost-system-dev \
         libboost-filesystem-dev \
         libboost-date-time-dev \
@@ -241,12 +244,11 @@ install_retroarch() {
     sudo apt install -y \
         libretro-beetle-psx \
         libretro-snes9x \
-        libretro-genesis-plus-gx \
+        libretro-genesisplusgx \
         libretro-gambatte \
         libretro-mgba \
         libretro-nestopia \
-        libretro-picodrive \
-        libretro-stella
+        libretro-stella2014
     
     # Configure RetroArch for Pine A64
     mkdir -p /home/$USER/.config/retroarch
