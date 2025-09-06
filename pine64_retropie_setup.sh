@@ -211,6 +211,7 @@ install_emulationstation() {
     
     # Clone and build EmulationStation
     cd /tmp
+    rm -rf EmulationStation
     git clone --recursive https://github.com/RetroPie/EmulationStation.git
     cd EmulationStation
     
@@ -294,21 +295,43 @@ EOF
     log "RetroArch installation completed"
 }
 
-# Emulators will be installed from source via RetroPie
+# Configure RetroPie autostart and Pine A64 optimizations
+configure_retropie_autostart() {
+    log "Configuring RetroPie autostart and Pine A64 optimizations..."
+    
+    # Ensure RetroPie directories exist
+    sudo mkdir -p /opt/retropie/configs/all
+    
+    # Create autostart with Pine A64 performance optimizations
+    sudo tee /opt/retropie/configs/all/autostart.sh << 'EOF'
+#!/bin/bash
 
-# Create startup scripts and desktop entries
+# Pine A64 performance optimizations
+echo performance | sudo tee /sys/devices/platform/1c20000.gpu/devfreq/1c20000.gpu/governor 2>/dev/null || true
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor 2>/dev/null || true
+
+# Start EmulationStation
+emulationstation
+EOF
+    
+    sudo chmod +x /opt/retropie/configs/all/autostart.sh
+    
+    log "RetroPie autostart configured"
+}
+
+# Create startup scripts (removed desktop entry for minimal)
 create_startup_scripts() {
     log "Creating startup scripts..."
     
-    # Create EmulationStation launcher
+    # Create EmulationStation launcher for manual execution
     sudo tee /usr/local/bin/emulationstation-launcher << 'EOF'
 #!/bin/bash
 
 # Set GPU governor for gaming performance
-echo performance | sudo tee /sys/devices/platform/1c20000.gpu/devfreq/1c20000.gpu/governor
+echo performance | sudo tee /sys/devices/platform/1c20000.gpu/devfreq/1c20000.gpu/governor 2>/dev/null || true
 
 # Set CPU governor for gaming performance  
-echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor 2>/dev/null || true
 
 # Start EmulationStation
 cd /home/$USER
@@ -316,20 +339,6 @@ emulationstation
 EOF
     
     sudo chmod +x /usr/local/bin/emulationstation-launcher
-    
-    # Create desktop entry
-    tee /home/$USER/Desktop/EmulationStation.desktop << EOF
-[Desktop Entry]
-Name=EmulationStation
-Comment=Retro Gaming Frontend
-Exec=/usr/local/bin/emulationstation-launcher
-Icon=emulationstation
-Terminal=false
-Type=Application
-Categories=Game;
-EOF
-    
-    chmod +x /home/$USER/Desktop/EmulationStation.desktop
     
     log "Startup scripts created"
 }
@@ -376,13 +385,15 @@ main() {
     setup_audio
     install_emulationstation
     install_retroarch
+    configure_retropie_autostart
     create_startup_scripts
     configure_system
     
     log "Installation completed successfully!"
     info "Please reboot your system to apply all changes"
-    info "After reboot, launch by running: emulationstation-launcher"
+    info "After reboot, EmulationStation will auto-start, or run: emulationstation-launcher"
     warning "Remember to copy ROMs to /home/$USER/RetroPie/roms/ and BIOS files to /home/$USER/RetroPie/BIOS/"
+    info "Additional emulators can be installed later through RetroPie's package management system"
 }
 
 # Run main function
