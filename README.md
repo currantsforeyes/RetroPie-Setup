@@ -27,6 +27,7 @@ The script is executed with:
 
 ```shell
 cd RetroPie-Setup
+chmod +x pine64_retropie_setup.sh
 sudo ./pine64_retropie_setup.sh
 ```
 
