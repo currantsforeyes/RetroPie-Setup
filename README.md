@@ -11,9 +11,9 @@ This script is designed for use on Pine A64 mainline kernel implemented in Armbi
 To run the Pine64 RetroPie Setup Script make sure that your APT repositories are up-to-date and that Git is installed:
 
 ```shell
-sudo apt-get update
-sudo apt-get dist-upgrade
-sudo apt-get install git
+sudo apt update
+sudo apt upgrade
+sudo apt install git
 ```
 
 Then you can download the latest Pine64 RetroPie setup script with:
