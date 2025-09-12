@@ -27,8 +27,8 @@ The script is executed with:
 
 ```shell
 cd RetroPie-Setup
-chmod +x pine64_retropie_setup.sh
-sudo ./pine64_retropie_setup.sh
+chmod +x retropie_setup.sh
+sudo ./retropie_setup.sh
 ```
 
 When you first run the script it may install some additional packages that are needed.
@@ -36,9 +36,50 @@ When you first run the script it may install some additional packages that are n
 Binaries and Sources
 --------------------
 
-Installing from binary is recommended on a Raspberry Pi as building everything from source can take a long time.
+Since the Pine64 has different hardware to Raspberry Pi's, installing from source is recommended but does take a long time.
 
-For more information, visit the site at https://retropie.org.uk or the repository at https://github.com/RetroPie/RetroPie-Setup.
+**I also have a Mali GPU optimisation script.**
+
+What It Does:
+Phase 1: Performance governors via systemd service
+Phase 2: 128MB CMA allocation in /boot/armbianEnv.txt
+Phase 3: RetroArch Mali-400MP2 configuration
+Phase 4: N64-specific optimizations
+Phase 5: Verification of GPU status
+
+# Save the script
+```shell
+curl -o pine_gpu_setup.sh [https://github.com/currantsforeyes/RetroPie-Setup/pine_gpu_setup.sh]
+```
+
+# Or copy the script content to: nano pine_gpu_setup.sh
+
+# Make executable
+```shell
+chmod +x pine_gpu_setup.sh
+```
+
+# Run after fresh RetroPie install
+```shell
+./pine_gpu_setup.sh
+```
+
+# Reboot to apply changes
+```shell
+sudo reboot
+```
+
+Hardware requirements (Pine A64, Mali-400MP2 compatibility)
+Prerequisites (Armbian 25.8.1 Bookworm, Lima drivers)
+Known working emulators (NES, SNES, N64 with mupen64plus-glide64)
+Known issues (analog audio problems on some boards)
+
+Verification commands users can run after the script:
+Confirm optimizations applied
+```shell
+cat /sys/devices/platform/soc/1c40000.gpu/devfreq/1c40000.gpu/governor
+dmesg | grep -i cma
+```
 
 Docs
 ----
