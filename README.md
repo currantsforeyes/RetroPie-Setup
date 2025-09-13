@@ -52,7 +52,10 @@ Phase 5: Verification of GPU status
 curl -o pine_gpu_setup.sh [https://github.com/currantsforeyes/RetroPie-Setup/pine_gpu_setup.sh]
 ```
 
-# Or copy the script content to: nano pine_gpu_setup.sh
+# Or copy the script content to:
+```shell
+nano pine_gpu_setup.sh
+```
 
 # Make executable
 ```shell
