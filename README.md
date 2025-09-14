@@ -49,22 +49,22 @@ Phase 5: Verification of GPU status
 
 # Save the script
 ```shell
-curl -o pine_gpu_setup.sh [https://github.com/currantsforeyes/RetroPie-Setup/pine_gpu_setup.sh]
+curl -o pine_a64_gpu_setup.sh [https://github.com/currantsforeyes/RetroPie-Setup/pine_a64_gpu_setup.sh]
 ```
 
 # Or copy the script content to:
 ```shell
-nano pine_gpu_setup.sh
+nano pine_a64_gpu_setup.sh
 ```
 
 # Make executable
 ```shell
-chmod +x pine_gpu_setup.sh
+chmod +x pine_a64_gpu_setup.sh
 ```
 
 # Run after fresh RetroPie install
 ```shell
-./pine_gpu_setup.sh
+./pine_a64_gpu_setup.sh
 ```
 
 # Reboot to apply changes
