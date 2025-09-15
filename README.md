@@ -72,6 +72,22 @@ chmod +x pine_a64_gpu_setup.sh
 sudo reboot
 ```
 
+# Install PulseAudio if missing
+```shell
+sudo apt update
+sudo apt install pulseaudio pulseaudio-utils
+```
+
+# Start PulseAudio
+```shell
+pulseaudio --start
+```
+
+# Set HDMI as default
+```shell
+pactl set-default-sink 1
+```
+
 Hardware requirements (Pine A64, Mali-400MP2 compatibility)
 Prerequisites (Armbian 25.8.1 Bookworm, Lima drivers)
 Known working emulators (NES, SNES, N64 with mupen64plus-glide64)
