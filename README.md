@@ -20,7 +20,7 @@ Then you can download the latest Pine64 RetroPie setup script with:
 
 ```shell
 cd
-git clone --depth=1 https://github.com/currantsforeyes/RetroPie-Setup.git
+git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git
 ```
 
 The script is executed with:
