@@ -36,7 +36,7 @@ When you first run the script it may install some additional packages that are n
 Binaries and Sources
 --------------------
 
-Since the Pine64 has different hardware to Raspberry Pi's, installing from source is recommended but does take a long time.
+Since the Pine64 has different hardware to the Raspberry Pi family, installing from source is recommended but does take a long time.
 
 **I also have a Mali GPU optimisation script.**
 
@@ -100,10 +100,17 @@ cat /sys/devices/platform/soc/1c40000.gpu/devfreq/1c40000.gpu/governor
 dmesg | grep -i cma
 ```
 
+Notes
+----
+This process has been tested on the Pine A64+ board with 1GB of RAM and it works. It isn't perfect (there is still some audio stutter) but the N64 is quite demanding on resources. I would expect any emulator prior to the N64 should work. I haven't tested any disc-based consoles as i didn't see much point.
+
+My Pine A64+ was sat doing nothing since i backed it on Kickstarter many moons ago and this has given it new life :D
+
 Docs
 ----
 
-You can find useful information about several components and answers to frequently asked questions in the [RetroPie Docs](https://retropie.org.uk/docs/). If you think that there is something missing, you are invited to submit a pull request to the [RetroPie-Docs repository](https://github.com/RetroPie/RetroPie-Docs).
+You can find more information on the [RetroPie website](https://retropie.org.uk/)
+or there may be something in the [RetroPie-Docs repository](https://github.com/RetroPie/RetroPie-Docs).
 
 
 Thanks
